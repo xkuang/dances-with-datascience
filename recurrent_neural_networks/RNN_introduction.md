@@ -4,7 +4,7 @@
 ### Sequences of Vectors
 "The core reason that recurrent nets are more exciting is that they allow us to operate over sequences of vectors: Sequences in the input, the output, or in the most general case both." Andrej Karpathy [link](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
-![Sequence Types](/images/RNNs-sequences-types.jpeg)
+![Sequence Types](images/RNNs-sequences-types.jpeg)
 Figure. Each rectangle is a vector and arrows represent functions (e.g. matrix multiply). Input vectors are in red, output vectors are in blue and green vectors hold the RNN's state
 
 ## Example Applications of RNNs:
