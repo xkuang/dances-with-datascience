@@ -11,7 +11,7 @@ Figure. Each rectangle is a vector and arrows represent functions (e.g. matrix m
 
 ## Key concept of an RNN
 ![Fig10.3 Deep Learning Book](images/DeepLearningBook_fig103.png)
-Two representations of the basic RNN architecture. On the left, the RNN is drawn with recurrent connections and on the right, it is drawn as a time-series unfolded computational graph. Each x-value represents one time point, such as for example, a word in a sentence or measurement at a time t. The hidden layer, h, is updated based on each the input of each point, thereby efectively giving the network the capacity to carry memory from inputs at any point in the sequence. 
+Two representations of the basic RNN architecture. On the left, the RNN is drawn with recurrent connections and on the right, it is drawn as a time-series unfolded computational graph. Each x-value represents one time point, such as for example, a word in a sentence or measurement at a time t. The hidden layer, h, is updated based on the input of each point, thereby effectively giving the network the capacity to consider memory from inputs earlier in the sequence at any point later in the sequence. 
 
 The input x is used to produce an output o via the hidden layer, h. The output is compared to the actual values y and loss function L measures how far o and y deviate from each other. 
 
