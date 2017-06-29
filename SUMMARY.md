@@ -4,5 +4,5 @@
   * [Text Classification with sklearn](text_classification_with_sklearn.md)
   * [Missing Word Imputation](missing_word_imputation/missing_word_prediction_via_ngrams.md)
 * Recurrent Neural Networks
-  * [RNN Introduction](RNN_introduction.md)
+  * [RNN Introduction](recurrent_neural_networks/RNN_introduction.md)
 * [Glossary](glossary.md)
