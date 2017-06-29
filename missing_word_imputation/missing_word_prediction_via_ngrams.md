@@ -1,7 +1,7 @@
 
 # Predicting location of a missing word through ngrams
 
-## This script goes through using n-grams to predict the location of a missing word in a sentence. The problem is based on a competition previously held on [Kaggle](https://www.kaggle.com/c/billion-word-imputation), to impute a singular word into a sentence . That problem can be solved in two subtasks: predicitng the missing word's location, and then inserting the most probable word. Here we attempt to model the former.
+This script goes through using n-grams to predict the location of a missing word in a sentence. The problem is based on a competition previously held on [Kaggle](https://www.kaggle.com/c/billion-word-imputation), to impute a singular word into a sentence . That problem can be solved in two subtasks: predicitng the missing word's location, and then inserting the most probable word. Here we attempt to model the former.
 
 
 ```python
@@ -31,7 +31,7 @@ len(corpus)
 The data come to us as complete sentences, with no particular ordering or themes, but thankfuly (presumably) cleaned and ready to work with.
 For our proof of concept we will do just the necessary preprocessing to work with our sentences - worrying about more thourghough work at a later date.
 
-### Create our training set with a randomly removed word from each sentence, noting the word and it's location in the sentence. For the rules of this competition, the first and last word of a sentence could not be removed, BUT the last 'word' was always ".", which we strip out anyways with the rest of punctuation. For proof of concept and computing time, we will downsample to only the first 5000 sentences. 
+Create our training set with a randomly removed word from each sentence, noting the word and it's location in the sentence. For the rules of this competition, the first and last word of a sentence could not be removed, BUT the last 'word' was always ".", which we strip out anyways with the rest of punctuation. For proof of concept and computing time, we will downsample to only the first 5000 sentences. 
 
 
 ```python
@@ -61,9 +61,10 @@ for line in train[0:5000]:
 Good. We now have 4 key data structures to run through our model: train, X_train (with a removed word), y_train (the removed word), and y_train_index.
 
 ## The Model
-### Predicting where a word is missing from a sentence can be done in multiple ways, including Parts of Speech (described elsewhere in this repo), and n-gram probability which we do here. 
 
-### Given the number of occurences of all bigrams C(w1,w2) and the occurences of all trigrams C(w,1,wx,w2), we calculate the number of occurences, D(w1,w,w2), where the is one and only one word inbetween w1 and w3. We can then apply this as a probability in our word-removed sentences, scoring which bigram is the most likely to actually be a trigram of the form D(w1,w,w2). 
+Predicting where a word is missing from a sentence can be done in multiple ways, including Parts of Speech (described elsewhere in this repo), and n-gram probability which we do here. 
+
+Given the number of occurences of all bigrams C(w1,w2) and the occurences of all trigrams C(w,1,wx,w2), we calculate the number of occurences, D(w1,w,w2), where the is one and only one word inbetween w1 and w3. We can then apply this as a probability in our word-removed sentences, scoring which bigram is the most likely to actually be a trigram of the form D(w1,w,w2). 
 
 
 ```python
@@ -106,7 +107,7 @@ Cbigram = bigrams.sum(axis=0)
 Ctrigram = trigrams.sum(axis=0)
 ```
 
-### create D(w1,w2) , the number of occurences of the trigram of the form w1, w, w3 to use as out probability of a bigram actually being a trigram
+create D(w1,w2) , the number of occurences of the trigram of the form w1, w, w3 to use as out probability of a bigram actually being a trigram
 
 
 ```python
@@ -161,7 +162,7 @@ D2 = { k:v for k, v in D.items() if v }
 joblib.dum(D2, "persistence/D2.pkl")
 ```
 
-### Finding the location of the missing word is now able to be performed. The idea is, that in each sentence, all bigrams can be compared, and the one with the highest probability of being a trigram is the location of the missing word. Note that this works because in our test, we _know_ that a word is missing, but if we didn't we could set a threshold or other metric instead.
+Finding the location of the missing word is now able to be performed. The idea is, that in each sentence, all bigrams can be compared, and the one with the highest probability of being a trigram is the location of the missing word. Note that this works because in our test, we _know_ that a word is missing, but if we didn't we could set a threshold or other metric instead.
 
 
 ```python
@@ -214,7 +215,8 @@ score_sentence(sentence.split())
 ```
 
 ## Accuracy evaluation
-### To test our accuracy, we can now use X_train and y_train_index to see how well this model predicts the location of a missing word... sorta! Remember that we used (almost) the same sentences to create our bigrams and trigrams counts, so we're double-dipping into our data. But if we don't get a good result here, then we won't anywhere else either, and will have to re-approach the model as a whole.
+
+To test our accuracy, we can now use X_train and y_train_index to see how well this model predicts the location of a missing word... sorta! Remember that we used (almost) the same sentences to create our bigrams and trigrams counts, so we're double-dipping into our data. But if we don't get a good result here, then we won't anywhere else either, and will have to re-approach the model as a whole.
 
 
 ```python
@@ -233,9 +235,10 @@ accuracy = result['hit'].sum() / len(result['hit']) * 100
 #TODO input results table
 
 ## Conclusion
-### There you have it. We went through tokenizing a large text dataset, created massive (and sparse) arrays of vectorized counts, and created a bigram-trigram comparison model to predict where in a sentence a word is missing. 
 
-### The next step, is to impute the word, which again, can be done in a multitude of ways. 
+There you have it. We went through tokenizing a large text dataset, created massive (and sparse) arrays of vectorized counts, and created a bigram-trigram comparison model to predict where in a sentence a word is missing. 
+
+The next step, is to impute the word, which again, can be done in a multitude of ways. 
 
 
 ```python
