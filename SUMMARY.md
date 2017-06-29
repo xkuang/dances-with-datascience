@@ -5,3 +5,4 @@
   * [Missing Word Imputation](missing_word_imputation/missing_word_prediction_via_ngrams.md)
 * Recurrent Neural Networks
   * [RNN Introduction](RNN_introduction.md)
+* [Glossary](glossary.md)
