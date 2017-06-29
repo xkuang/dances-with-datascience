@@ -7,12 +7,13 @@
 	- Sequences of Vectors
 	- Key concept of an RNN
 	- Backpropagation through time
-- Example Applications of RNNs:
+- Example Applications of RNNs
 	- One-to-One Sequences
 	- One-to-Many Sequences
 	- Many-to-One Sequences
 	- Many-to-Many Sequences
 - Advanced Topics
+	- Long Short Term Memory \(LSTM\)
 	- Attention
 	- Peepholes
 	- Gated Recurrent Units
@@ -48,7 +49,9 @@ The input x is used to produce an output o via the hidden layer, h. The output i
 
 ### Backpropagation through time
 
-## Example Applications of RNNs:
+Because RNNs try to capture information from previous timesteps, backpropagation takes on a modified form. In this case, gradients for the current hidden node take into consideration gradients from previous hidden states. As such, backpropagation through time sums the gradients that determine the weights on the hidden cell at the current time. While in theory, this is able to capture the long-term memory, vanilla RNNs in practice have a difficult time doing so. In current practice, specialized methods such as LSTM and GRU are deployed in order to better capture long-range memory. Read more about Backpropagation through time in Denny Britz's excellent [blog article](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/).
+
+## Example Applications of RNNs
 
 ### One-to-One Sequences
 Description: from fixed-sized input to fixed-sized output. The Vanilla mode of processing without RNN.
@@ -68,6 +71,7 @@ Use cases: Sentiment analysis, where a given body of text is classified as expre
 
 Code/tutorials:
 - [Sentiment analysis using LSTM](http://deeplearning.net/tutorial/lstm.html) 
+
 - [Language modelling using tensorflow](https://www.tensorflow.org/tutorials/recurrent)
 
 ### Many-to-Many Sequences
@@ -87,6 +91,10 @@ Use cases: Video classification, where we wish to label each frame of the video.
 - insert more material here
 
 ## Advanced Topics 
+
+### Long Short Term Memory (LSTM)
+[the bible](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+
 ### Attention
 Attention can be applied to various advanced topics of RNNs. For example, it can be used to read and write from a memory vector using Neural Turing Machines or be leveraged to get the network to focus on a particular section of the input. [Need general introduction to attention systems here]
 
@@ -96,9 +104,10 @@ Read more [here.](http://distill.pub/2016/augmented-rnns/)
 Peephole connections pass directly from the internal state to the input and output gates of that same node without first having to be modulated by the output gate. 
 For example, "Consider a network which must learn to count objects and emit some desired output when n objects have been seen. The net- work might learn to let some fixed amount of activation into the internal state after each object is seen. This activation is trapped in the internal state sc by the constant error carousel, and is incremented iteratively each time another object is seen. When the nth object is seen, the network needs to know to let out content from the internal state so that it can affect the output. To accomplish this, the output gate oc must know the content of the internal state sc. Thus sc should be an input to oc." From Review Paper below. 
 
-
 ### Gated Recurrent Units
-[tutorial with explanation](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/)
+GRUs are a newer version of LSTMs, introduced only in 2014. GRUs also use gates in order to determine how much of the input and memory is communicated in the present hidden state. They are simpler than LSTM nodes since they have less gates and there is no separate internal memory. They can be applied in much the same way as LSTMs and there are no clear guidelines with regards to when to use LSTM vs. when to use GRUs. 
+
+More details once again in Denny Britz's [blog](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/).
 
 ## Resources 
 ### Aggregated resources
