@@ -61,7 +61,7 @@ Use cases: image classification.
 ### One-to-Many Sequences
 Description: sequence output.
 
-Use cases: image captioning, where the input is an image and the output is a sentence of words that describes the image. 
+Use cases: image captioning (Image to Text), where the input is an image and the output is a sentence of words that describes the image.  
 Speech recognition
 
 ### Many-to-One Sequences
@@ -78,7 +78,7 @@ Code/tutorials:
 #### Asynchronous Sequences
 Description: Sequence input and sequence output.
 
-Use cases: Machine translation, where an RNN reads a sentence in English and then outputs a sentence in a different language.
+Use cases: Natural Language Translation (or Machine translation), where an RNN reads a sentence in English and then outputs a sentence in a different language.  Video captioning
 
 Code/tutorials:
 - [LSTM text generation using theano/lasagne](http://deeplearning.net/tutorial/lstm.html) based on Karpathy's char-rnn
@@ -86,9 +86,8 @@ Code/tutorials:
 #### Synchronous Sequences
 Description: Synced sequence input and output.
 
-Use cases: Video classification, where we wish to label each frame of the video.
+Use cases: Video classification, where we wish to label each frame of the video.  Part of speech tagging . Generative models for text (e.g. generating code, generating Shakespeare).
 
-- insert more material here
 
 ## Advanced Topics 
 
@@ -104,7 +103,7 @@ Read more [here.](http://distill.pub/2016/augmented-rnns/)
 Peephole connections pass directly from the internal state to the input and output gates of that same node without first having to be modulated by the output gate. 
 For example, "Consider a network which must learn to count objects and emit some desired output when n objects have been seen. The net- work might learn to let some fixed amount of activation into the internal state after each object is seen. This activation is trapped in the internal state sc by the constant error carousel, and is incremented iteratively each time another object is seen. When the nth object is seen, the network needs to know to let out content from the internal state so that it can affect the output. To accomplish this, the output gate oc must know the content of the internal state sc. Thus sc should be an input to oc." From Review Paper below. 
 
-### Gated Recurrent Units
+### Gated Recurrent Units (GRUs)
 GRUs are a newer version of LSTMs, introduced only in 2014. GRUs also use gates in order to determine how much of the input and memory is communicated in the present hidden state. They are simpler than LSTM nodes since they have less gates and there is no separate internal memory. They can be applied in much the same way as LSTMs and there are no clear guidelines with regards to when to use LSTM vs. when to use GRUs. 
 
 More details once again in Denny Britz's [blog](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/).
