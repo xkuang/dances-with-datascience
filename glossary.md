@@ -13,3 +13,12 @@ From [Leonardo Araujo dos Santos': Artificial Intelligence](https://leonardoarau
 #### SGD
 
 Stochastic Gradient Descent
+
+##### Mini-batch SGD
+
+From [CS231, Lecture 5](https://www.youtube.com/watch?v=mzkOF4tULj8&list=PL16j5WbGpaM0_Tj8CRmurZ8Kk1gEBc7fg&index=5):
+
+1. **Sample** a batch of data
+2. **Forward** propagation through the graph, recording loss
+3. **Backward** propagation, calculating gradients
+4. **Update** the parameters using the gradient

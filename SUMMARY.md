@@ -6,3 +6,4 @@
 * Recurrent Neural Networks
   * [RNN Introduction](recurrent_neural_networks/RNN_introduction.md)
 * [Glossary](glossary.md)
+* [Scraps](scraps.md)
