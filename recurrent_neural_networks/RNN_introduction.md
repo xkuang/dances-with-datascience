@@ -92,6 +92,9 @@ Use cases: Video classification, where we wish to label each frame of the video.
 ## Advanced Topics 
 
 ### Long Short Term Memory (LSTM)
+
+To get a better understanding of the basic workings of a LSTM network, take a look at the video [LSTM Explained by Brandon Rohrer](https://www.youtube.com/watch?v=WCUNPb-5EYI).
+
 [the bible](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
 ### Attention
