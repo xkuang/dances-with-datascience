@@ -41,15 +41,18 @@ Figure. Each rectangle is a vector and arrows represent functions (e.g. matrix m
 ### Key concept of an RNN
 ![Fig10.3 Deep Learning Book](images/DeepLearningBook_fig103.png)
 
-Two representations of the basic RNN architecture. On the left, the RNN is drawn with recurrent connections and on the right, it is drawn as a time-series unfolded computational graph. Each x-value represents one time point, such as for example, a word in a sentence or measurement at a time t. The hidden layer, h, is updated based on the input of each point, thereby effectively giving the network the capacity to consider memory from inputs earlier in the sequence at any point later in the sequence. 
+Two representations of the basic RNN architecture. On the left, the RNN is drawn with recurrent connections and on the right, it is drawn as a time-series unfolded computational graph. Each x-value represents one time point, such as for example, a word in a sentence or measurement at a time t. The hidden layer, h, is updated based on the input of each point, thereby effectively giving the network the capacity to consider memory from inputs earlier in the sequence at any point later in the sequence.
 
-The input x is used to produce an output o via the hidden layer, h. The output is compared to the actual values y and loss function L measures how far o and y deviate from each other. 
+The input x is used to produce an output o via the hidden layer, h. The output is compared to the actual values y and loss function L measures how far o and y deviate from each other.
 
 [The Deep Learning Book](http://www.deeplearningbook.org/contents/rnn.html)
 
 ### Backpropagation through time
 
-Because RNNs try to capture information from previous timesteps, backpropagation takes on a modified form. In this case, gradients for the current hidden node take into consideration gradients from previous hidden states. As such, backpropagation through time sums the gradients that determine the weights on the hidden cell at the current time. While in theory, this is able to capture the long-term memory, vanilla RNNs in practice have a difficult time doing so. In current practice, specialized methods such as LSTM and GRU are deployed in order to better capture long-range memory. Read more about Backpropagation through time in Denny Britz's excellent [blog article](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/).
+Because RNNs try to capture information from previous timesteps, backpropagation takes on a modified form. In this case, gradients for the current hidden node take into consideration gradients from previous hidden states. Specifically, during the forward pass the value of the loss function is calculated along with local gradients (i.e. influence on the calculated loss), while in the backwards pass the gradient of the expression on the inputs with respect to the loss function are derived (i.e. a gradient is calculated by using the local gradient and by applying the chain rule). As such, backpropagation through time sums the gradients and uses this to increment the weights on the hidden cell at the current time. While in theory, this is able to capture the long-term memory, vanilla RNNs in practice have a difficult time doing so. In current practice, specialized methods such as LSTM and GRU are deployed in order to better capture long-range memory. Read more about Backpropagation through time in Denny Britz's excellent [blog article](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/) and Andrej Karpathy's lecture [youtube](https://www.youtube.com/watch?v=i94OvYb6noo&list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC&index=4).
+
+
+
 
 ## Example Applications of RNNs
 
@@ -70,7 +73,7 @@ Description: sequence input.
 Use cases: Sentiment analysis, where a given body of text is classified as expressing positive or negative sentiment.
 
 Code/tutorials:
-- [Sentiment analysis using LSTM](http://deeplearning.net/tutorial/lstm.html) 
+- [Sentiment analysis using LSTM](http://deeplearning.net/tutorial/lstm.html)
 
 - [Language modelling using tensorflow](https://www.tensorflow.org/tutorials/recurrent)
 
@@ -89,7 +92,7 @@ Description: Synced sequence input and output.
 Use cases: Video classification, where we wish to label each frame of the video.  Part of speech tagging . Generative models for text (e.g. generating code, generating Shakespeare).
 
 
-## Advanced Topics 
+## Advanced Topics
 
 ### Long Short Term Memory (LSTM)
 
@@ -103,15 +106,15 @@ Attention can be applied to various advanced topics of RNNs. For example, it can
 Read more [here.](http://distill.pub/2016/augmented-rnns/)
 
 ### Peepholes
-Peephole connections pass directly from the internal state to the input and output gates of that same node without first having to be modulated by the output gate. 
-For example, "Consider a network which must learn to count objects and emit some desired output when n objects have been seen. The net- work might learn to let some fixed amount of activation into the internal state after each object is seen. This activation is trapped in the internal state sc by the constant error carousel, and is incremented iteratively each time another object is seen. When the nth object is seen, the network needs to know to let out content from the internal state so that it can affect the output. To accomplish this, the output gate oc must know the content of the internal state sc. Thus sc should be an input to oc." From Review Paper below. 
+Peephole connections pass directly from the internal state to the input and output gates of that same node without first having to be modulated by the output gate.
+For example, "Consider a network which must learn to count objects and emit some desired output when n objects have been seen. The net- work might learn to let some fixed amount of activation into the internal state after each object is seen. This activation is trapped in the internal state sc by the constant error carousel, and is incremented iteratively each time another object is seen. When the nth object is seen, the network needs to know to let out content from the internal state so that it can affect the output. To accomplish this, the output gate oc must know the content of the internal state sc. Thus sc should be an input to oc." From Review Paper below.
 
 ### Gated Recurrent Units (GRUs)
-GRUs are a newer version of LSTMs, introduced only in 2014. GRUs also use gates in order to determine how much of the input and memory is communicated in the present hidden state. They are simpler than LSTM nodes since they have less gates and there is no separate internal memory. They can be applied in much the same way as LSTMs and there are no clear guidelines with regards to when to use LSTM vs. when to use GRUs. 
+GRUs are a newer version of LSTMs, introduced only in 2014. GRUs also use gates in order to determine how much of the input and memory is communicated in the present hidden state. They are simpler than LSTM nodes since they have less gates and there is no separate internal memory. They can be applied in much the same way as LSTMs and there are no clear guidelines with regards to when to use LSTM vs. when to use GRUs.
 
 More details once again in Denny Britz's [blog](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/).
 
-## Resources 
+## Resources
 ### Aggregated resources
 
 [Aggregate](https://github.com/kjw0612/awesome-rnn) of RNN resources
