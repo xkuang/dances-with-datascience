@@ -22,3 +22,6 @@ From [CS231, Lecture 5](https://www.youtube.com/watch?v=mzkOF4tULj8&list=PL16j5W
 2. **Forward** propagation through the graph, recording loss
 3. **Backward** propagation, calculating gradients
 4. **Update** the parameters using the gradient
+
+#### Logits
+Log odds or log probabilities defined as logit(p) = log(p / (1-p)). In machine learning, logits are the unnormalized log probabilities. Therefore, for example in a classification problem, the values assigned to y_hat do not sum up to 1 over all classes. Commonly, the logits would then be normalized through a function such as a softmax in order to obtain the normalized probabilities that a sample belongs to a given class. More detail available [here](https://stackoverflow.com/questions/34240703/difference-between-tensorflow-tf-nn-softmax-and-tf-nn-softmax-cross-entropy-with) (I like the second answer).
