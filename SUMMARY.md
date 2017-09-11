@@ -8,6 +8,9 @@
 * Recurrent Neural Networks
     * [RNN Introduction](recurrent_neural_networks/RNN_introduction.md)
     * [Optimizing a model](recurrent_neural_networks/optimizing_your_model.md)
+* Cloud platforms 
+    * [Compute Canada Rapid Access Service](CC_gpu_service.md)
 * [Glossary](glossary.md)
 * [Scraps](scraps.md)
+* [test](recurrent_neural_networks/dichan_demo.md)
 
