@@ -23,10 +23,9 @@ Compute Canada also provides documentation on running [tensorflow jobs](https://
 
 ## Quota and scheduling 
 
-Unfortunately, at the time of testing, the GPUs on the Cedar (and Graham) cluster was in full use and the sample tensorflow script did not run immediately. This is in part because users not utilizing the Rapid Access Service, but with dedicated allocations have priority. At the time of submission, there were over 360 other jobs ahead in the queue. After 3 days, this had changed to about 200. However, because all jobs are not of equal priority, it is difficult to extrapolate how long users would need to wait. 
+Unfortunately, at the time of testing, the GPUs on the Cedar (and Graham) cluster was in full use and the sample tensorflow script did not run immediately. This is in part because users not utilizing the Rapid Access Service, but with dedicated allocations have priority. At the time of submission, there were over 360 other jobs ahead in the queue. After approximately 3 days, the job was submitted and ran. 
 
-
-Further, scheduling is based on a "fair share" policy. Because *ALL* Rapid Access Service users share the same allocation and the implementation of the "fair share" policy, a user's ability to use the service is affected by how active other Rapid Access Service users have been. A neutral fair share score is 0.50. That is, the account has used its exact target allocation. Lower scores mean the user has used too much allocation. Currently, the Rapid Access Service's fair share score is 0.03, effectively meaning any Rapid Access Service users' jobs are very low in priority.  
+Scheduling is based on a "fair share" policy. Because all Rapid Access Service users share the same allocation and the implementation of the "fair share" policy, a user's ability to use the service is affected by how active other Rapid Access Service users have been. A neutral fair share score is 0.50. That is, the account has used its exact target allocation. Lower scores mean the user has used too much allocation. Currently, the Rapid Access Service's fair share score is 0.03, effectively meaning any Rapid Access Service users' jobs are very low in priority.  
 
 ## Conclusion
 
